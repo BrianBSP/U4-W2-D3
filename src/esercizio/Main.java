@@ -1,5 +1,6 @@
 package esercizio;
 
+import com.github.javafaker.Faker;
 import enums.Status;
 import enums.Tier;
 
@@ -17,11 +18,16 @@ public class Main {
         Prodotto prodotto5 = new Prodotto("La ragazza del treno", "Books", 110);
         Prodotto prodotto6 = new Prodotto("Un fuoco che brucia lento", "Books", 90);
 
+        // implementazione libreria faker
+        Faker f = new Faker();
+
+
         // creazione clienti
-        Cliente cliente1 = new Cliente("Aldo Baglio", Tier.LIVELLO1);
-        Cliente cliente2 = new Cliente("Giovanni Storti", Tier.LIVELLO2);
-        Cliente cliente3 = new Cliente("Giacomo Poretti", Tier.LIVELLO2);
-        Cliente cliente4 = new Cliente("Checco Zalone", Tier.LIVELLO3);
+        Cliente cliente1 = new Cliente(f.friends().character(), Tier.LIVELLO1);
+        Cliente cliente2 = new Cliente(f.friends().character(), Tier.LIVELLO2);
+        Cliente cliente3 = new Cliente(f.friends().character(), Tier.LIVELLO2);
+        Cliente cliente4 = new Cliente(f.friends().character(), Tier.LIVELLO3);
+
 
         // creazione ordini
         Ordine ordine1 = new Ordine(Status.SPEDITO, LocalDate.of(2024, 7, 1), LocalDate.now(), Arrays.asList(prodotto1, prodotto2, prodotto3, prodotto6), cliente1);
@@ -37,6 +43,8 @@ public class Main {
 
         // lista clienti
         List<Cliente> clienti = List.of(cliente1, cliente2, cliente3, cliente4);
+
+        clienti.forEach(System.out::println);
 
         // es1 ottenere una lista di prodotti BOOKS con prezzo > 100
         List<Prodotto> books = catalogoProdotti
