@@ -75,7 +75,7 @@ public class Main {
         prodottiBoys.forEach(System.out::println);
 
         // es4 ottenere una lista di prodotti ordinati da clienti di livello 2 tra l'1-6-2024 e il 31-7-2024
-        List<Prodotto>
+        
 
     }
 }
