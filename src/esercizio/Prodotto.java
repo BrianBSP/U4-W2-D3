@@ -48,7 +48,7 @@ public class Prodotto {
 
     @Override
     public String toString() {
-        return "----Prodotto----\n{" +
+        return "\n----Prodotto----\n{" +
                 "id = " + id +
                 ", \nnome = '" + nome + '\'' +
                 ", \ncategoria = '" + categoria + '\'' +

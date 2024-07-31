@@ -42,7 +42,7 @@ public class Cliente {
     // toString
     @Override
     public String toString() {
-        return "-----Cliente-----\n{" +
+        return "\n-----Cliente-----\n{" +
                 "id = " + id +
                 ", \ntier = " + tier +
                 ", \nnome Cliente = '" + nomeCliente + '\'' +

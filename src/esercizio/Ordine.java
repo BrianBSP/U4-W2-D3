@@ -70,7 +70,7 @@ public class Ordine {
     // toString
     @Override
     public String toString() {
-        return "----- Ordine -----\n{" +
+        return "\n----- Ordine -----\n{" +
                 "id = " + id +
                 ", \nstatus = " + status +
                 ", \ndataOrdine = " + dataOrdine +
