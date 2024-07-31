@@ -25,9 +25,9 @@ public class Main {
 
         // creazione ordini
         Ordine ordine1 = new Ordine(Status.SPEDITO, LocalDate.of(2024, 7, 1), LocalDate.now(), Arrays.asList(prodotto1, prodotto2, prodotto3, prodotto6), cliente1);
-        Ordine ordine2 = new Ordine(Status.CONSEGNATO, LocalDate.of(2024, 7, 28), LocalDate.of(2024, 7, 31), Arrays.asList(prodotto1, prodotto4), cliente2);
-        Ordine ordine3 = new Ordine(Status.CONSEGNATO, LocalDate.of(2024, 7, 28), LocalDate.of(2024, 7, 31), Arrays.asList(prodotto1, prodotto3, prodotto5), cliente3);
-        Ordine ordine4 = new Ordine(Status.CONSEGNATO, LocalDate.of(2024, 7, 28), LocalDate.of(2024, 7, 31), Arrays.asList(prodotto2, prodotto4), cliente4);
+        Ordine ordine2 = new Ordine(Status.CONSEGNATO, LocalDate.of(2024, 5, 28), LocalDate.of(2024, 5, 31), Arrays.asList(prodotto1, prodotto4), cliente2);
+        Ordine ordine3 = new Ordine(Status.CONSEGNATO, LocalDate.of(2024, 4, 28), LocalDate.of(2024, 4, 30), Arrays.asList(prodotto1, prodotto3, prodotto5), cliente4);
+        Ordine ordine4 = new Ordine(Status.CONSEGNATO, LocalDate.of(2024, 6, 28), LocalDate.of(2024, 6, 30), Arrays.asList(prodotto2, prodotto4), cliente3);
 
         // lista prodotti
         List<Prodotto> catalogoProdotti = List.of(prodotto1, prodotto2, prodotto3, prodotto4, prodotto5, prodotto6);
@@ -60,7 +60,7 @@ public class Main {
         System.out.println("liste ordini con prodotti appartenenti alla categoria baby");
         listaOrdiniBaby.forEach(System.out::println);
 
-        // ottenere una lista di prodotti che appartengono alla categoria BOYS e fare sconto 10%
+        // es3 ottenere una lista di prodotti che appartengono alla categoria BOYS e fare sconto 10%
         List<Prodotto> prodottiBoys = catalogoProdotti
                 .stream()
                 .filter(prodotto -> "Boys"
@@ -75,7 +75,18 @@ public class Main {
         prodottiBoys.forEach(System.out::println);
 
         // es4 ottenere una lista di prodotti ordinati da clienti di livello 2 tra l'1-6-2024 e il 31-7-2024
-        
+        LocalDate inizio = LocalDate.of(2024, 6, 1);
+        LocalDate fine = LocalDate.of(2024, 7, 31);
+
+        List<Prodotto> prodottiTier2 = ordini.stream()
+                .filter(ordine -> ordine.getCliente().getTier() == Tier.LIVELLO2)
+                .filter(ordine -> !ordine.getDataOrdine().isBefore(inizio) && !ordine.getDataOrdine().isAfter(fine))
+                .flatMap(ordine -> ordine.getProdotti().stream())
+                .toList();
+        System.out.println("------ Es 4 ------");
+        System.out.println("lista prodotti ordinati da clienti LIVELLO2 nel periodo tra 1-6-2024 al 31-7-2024");
+        prodottiTier2.forEach(System.out::println);
+
 
     }
 }
